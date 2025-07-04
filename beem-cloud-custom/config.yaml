@@ -5,7 +5,7 @@ services:
   - "mqtt:want"
 version: "0.0.1"
 homeassistant_api: true
-image: ""
+image: cyril-cros/beem-cloud-custom-{arch}
 slug: "beem-cloud-custom"
 init: false
 discovery:
