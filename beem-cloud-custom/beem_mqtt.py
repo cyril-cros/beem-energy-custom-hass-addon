@@ -1,3 +1,4 @@
+"""Module Handling MQTT integration """
 import json
 import logging
 from typing import Dict, Any

@@ -1,3 +1,4 @@
+"""Module storing constant configuration."""
 # API Configuration
 BASE_URL = "https://api-x.beem.energy/beemapp"
 LOGIN_ENDPOINT = "/user/login"

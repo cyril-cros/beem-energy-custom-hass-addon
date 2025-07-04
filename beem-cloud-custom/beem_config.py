@@ -1,3 +1,4 @@
+"""Module handling hass configuration UI."""
 import json
 import logging
 import os
