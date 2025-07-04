@@ -1,17 +1,13 @@
 """Module handling Home assistant configuration UI."""
-import json
-import logging
-import os
-
-"""Import requests library"""
 import requests
-
 from typing import Dict, Any
-
 from beem_constants import (
     DEFAULT_START_DELAY,
     DEFAULT_REFRESH_INTERVAL
 )
+import json
+import logging
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +31,7 @@ Class handling Config UI.
             logger.warning(f"Config file {self.config_path} not found. Using empty configuration.")
             config = {}
         except json.JSONDecodeError:
-            logger.error(f"Invalid JSON in {self.config_path}")
+            logger.error("Invalid JSON in %s", {self.config_path})
             config = {}
 
         # Merge with MQTT info from supervisor
@@ -55,7 +51,7 @@ Class handling Config UI.
             response = requests.get(
                 'http://supervisor/services/mqtt',
                 headers={
-                    'Authorization': f'Bearer {supervisor_token}',
+                    'Authorization': ('Bearer %s', {supervisor_token}),
                     'Content-Type': 'application/json'
                 }
             )
@@ -69,7 +65,7 @@ Class handling Config UI.
                 'mqtt_password': mqtt_response.get('data', {}).get('password', '')
             }
         except Exception as e:
-            logger.error(f"Failed to retrieve MQTT info: {e}")
+            logger.error("Failed to retrieve MQTT info: %s", {e})
             return {}
 
     def _validate_config(self):
