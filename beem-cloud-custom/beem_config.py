@@ -1,7 +1,9 @@
-"""Module handling hass configuration UI."""
+"""Module handling Home assistant configuration UI."""
 import json
 import logging
 import os
+
+"""Import requests library"""
 import requests
 
 from typing import Dict, Any
@@ -15,6 +17,10 @@ logger = logging.getLogger(__name__)
 
 
 class BeemEnergyConfig:
+    """
+Class handling Config UI.
+    """
+
     def __init__(self, config_path: str = "/data/options.json"):
         self.config_path = config_path
         self.config = self._load_config()
@@ -23,7 +29,7 @@ class BeemEnergyConfig:
     def _load_config(self) -> Dict[str, Any]:
         """Load configuration from options.json and supervisor MQTT info"""
         try:
-            with open(self.config_path, 'r') as config_file:
+            with open(self.config_path) as config_file:
                 config = json.load(config_file)
         except FileNotFoundError:
             logger.warning(f"Config file {self.config_path} not found. Using empty configuration.")
