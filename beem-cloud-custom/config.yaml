@@ -1,12 +1,12 @@
-name: "Beem Energy Custom Home Assistant"
-url: "https://github.com/cyril-cros/beem-energy-custom-hass-addon"
+name: "Beem Cloud Custom"
+url: "https://github.com/cyril-cros/beem-energy-custom-hass-addon/tree/main/beem-cloud-custom"
 description: "Connect your Beem Energy Battery to Home Assistant ⚡️"
 services:
   - "mqtt:want"
 version: "0.0.1"
 homeassistant_api: true
 image: ""
-slug: "beem_energy_custom"
+slug: "beem-cloud-custom"
 init: false
 discovery:
   - "mqtt"
